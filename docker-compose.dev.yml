@@ -30,7 +30,7 @@ services:
   php:
     build: .
     tty: true
-    image: web-php:1
+    image: web-php:2
     hostname: "php-docker"
     env_file:
       - .env
