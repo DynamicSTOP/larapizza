@@ -1,6 +1,10 @@
 //
 @import "palette";
 
+@mixin text-shadow($shadow:#000) {
+    text-shadow: 0 1px 1px $shadow, 0 -1px 1px $shadow, 1px 0 1px $shadow, -1px 0 1px $shadow;
+}
+
 html, body {
     background: var(--color-primary-2);
 }
@@ -9,6 +13,7 @@ nav {
     background: var(--color-primary-1);
 
     a, a:visited {
+        @include text-shadow(#EEE);
         font-weight: 600;
         cursor: pointer;
         text-decoration: none;
