@@ -32,7 +32,7 @@ RUN cd /tmp \
     && echo 'export PATH="$PATH:$HOME/.composer/vendor/bin:/opt/mssql-tools/bin"' > /home/dock/.bashrc
 
 
-# https://github.com/nodejs/docker-node/blob/master/12/alpine3.12/Dockerfile
+# https://github.com/nodejs/docker-node/blob/master/12/stretch/Dockerfile
 ENV NODE_VERSION 12.18.3
 
 RUN groupadd --gid 1000 node \
