@@ -26,5 +26,16 @@ I prefer keep things separate in containers.
    docke-compose exec php bash
    ``` 
 
+4. Inside container generate key
+   ```bash
+   php artisan key:generate 
+   ```   
+   
+5. Install node modules and compile assets
+   ```
+   npm install
+   npm run dev
+   ```
+
 
 todo artisan key, db, link to server

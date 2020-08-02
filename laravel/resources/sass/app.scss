@@ -1,2 +1,27 @@
 //
 @import "palette";
+
+html, body {
+    background: var(--color-primary-2);
+}
+
+nav {
+    background: var(--color-primary-1);
+
+    a, a:visited {
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        color: var(--color-complement-4);
+
+        &.navbar-brand {
+            font-weight: 800;
+        }
+    }
+
+    a:hover {
+        color: var(--color-secondary-2-3);
+    }
+
+}
+
