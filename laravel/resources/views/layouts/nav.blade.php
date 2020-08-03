@@ -1,8 +1,11 @@
 <nav class="row">
-    <div>
-        <a class="navbar-brand" href="/">LARA PIZZA</a>
+    <div class="navbar-brand">
+        <a  href="/">LARA PIZZA</a>
     </div>
     <div class="row">
-        <div class="cartButton">Cart</div>
+        <div class="cartButton">
+            <img src="/icons/cart.svg">
+            <span class=" @if($cartQuantity === 0) d-none @endif cartQuantity">{{$cartQuantity}}</span>
+            Cart</div>
     </div>
 </nav>

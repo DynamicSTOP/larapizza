@@ -1,5 +1,25 @@
 require('./bootstrap');
 
+function updateCartQuantity(cart) {
+    let totalInCart = 0;
+    const numberElement = document.querySelector('.cartQuantity');
+
+    for(let i in cart){
+        if(!cart.hasOwnProperty(i)){
+            continue;
+        }
+        totalInCart+= cart[i];
+
+    }
+
+    if (totalInCart > 0) {
+        numberElement.classList.remove('d-none');
+        numberElement.innerHTML = totalInCart;
+    } else {
+        numberElement.classList.add('d-none');
+    }
+}
+
 function toggleQuantityControls(element) {
     const buyBox = element.closest('.buyBtnBox');
     const buyBut = buyBox.querySelector('.buyBtn');
@@ -31,6 +51,7 @@ function addListeners() {
                     .then((json) => {
                         if (!json.errors) {
                             toggleQuantityControls(but);
+                            updateCartQuantity(json);
                         } else {
                             console.error(json.errors);
                         }
@@ -70,6 +91,7 @@ function addListeners() {
                             } else {
                                 quantityDiv.innerHTML = quantity;
                             }
+                            updateCartQuantity(json);
                         } else {
                             console.error(json.errors);
                         }

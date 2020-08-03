@@ -19,6 +19,7 @@ class Controller extends BaseController
 
         return view('index', [
             'cart' => $cart,
+            'cartQuantity' => array_reduce ( $cart ,  function($v, $e){ return $v+$e; }, 0 ),
             'pizzas' => Goods::getAllPizzas(),
             'salads' => Goods::getAllSalads(),
             'beverages' => Goods::getAllBeverages()
