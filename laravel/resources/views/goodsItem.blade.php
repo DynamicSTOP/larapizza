@@ -1,9 +1,11 @@
 <div class="itemContainer">
     <div
         class="goods--item column"
-        data-goodsid="{{$goods->id}}"
-        data-goodsPriceUsd="{{$goods->price_usd}}"
-        data-goodsPriceEuro="{{$goods->price_euro}}"
+        data-id="{{$goods->id}}"
+        data-price_usd="{{$goods->price_usd}}"
+        data-price_euro="{{$goods->price_euro}}"
+        data-type="{{$goods->type}}"
+        data-name=@json($goods->name)
     >
         <div>
             <div>

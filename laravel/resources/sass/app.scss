@@ -87,13 +87,16 @@ html, body {
 
 @include tablet {
     .container {
-        padding-right: 15px;
-        padding-left: 15px;
+        width: 100%;
+        padding: 0;
     }
 }
 
 @include desktop {
     .container {
+
+        padding-right: 15px;
+        padding-left: 15px;
         max-width: 1200px;
         margin-left: auto;
         margin-right: auto;

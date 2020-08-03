@@ -2,23 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Goods;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class Cart extends Controller
 {
-    public function show(Request $request)
+    public function show()
     {
-        $cart = $request->session()->get('cart', []);
-
-        $goodsIds = array_keys($cart);
-        $goods = Goods::select(['id', 'price_usd', 'price_euro', 'name', 'type'])
-            ->whereIn('id', $goodsIds)
-            ->orderBy('type', 'desc')
-            ->orderBy('name', 'desc')
-            ->get();
-        return ['goods' => $goods, 'cart' => $cart];
+        return \App\Cart::buildCartData();
     }
 
     //

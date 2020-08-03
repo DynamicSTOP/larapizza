@@ -18,7 +18,7 @@ class Controller extends BaseController
         $cart = $request->session()->get('cart',[]);
 
         return view('index', [
-            'cart' => $cart,
+            'cartData' => \App\Cart::buildCartData(),
             'cartQuantity' => array_reduce ( $cart ,  function($v, $e){ return $v+$e; }, 0 ),
             'pizzas' => Goods::getAllPizzas(),
             'salads' => Goods::getAllSalads(),

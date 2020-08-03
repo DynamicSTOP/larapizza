@@ -4,8 +4,16 @@
     flex-wrap: wrap;
 
     .itemContainer {
-        width: 25%;
+        width:100%;
         padding: 15px;
+        @include tablet{
+            width: 50%;
+        }
+
+        @include desktop{
+            width: 25%;
+        }
+
     }
 
     .goods--item {

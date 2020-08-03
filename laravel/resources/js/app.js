@@ -41,7 +41,7 @@ function addListeners() {
         .map((button) => {
             button.onclick = function () {
                 const but = this;
-                const id = this.closest('.goods--item').dataset["goodsid"];
+                const id = this.closest('.goods--item').dataset["id"];
                 fetch('/cart', {
                     method: 'POST',
                     headers: {'X-CSRF-TOKEN': csrf, 'Content-Type': 'application/json'},
@@ -76,7 +76,7 @@ function addListeners() {
                     return alert('Too many! We don\'t have that much stoves!');
                 }
 
-                const id = this.closest('.goods--item').dataset["goodsid"];
+                const id = this.closest('.goods--item').dataset["id"];
 
                 fetch('/cart', {
                     method: quantity === 0 ? 'DELETE' : 'POST',
