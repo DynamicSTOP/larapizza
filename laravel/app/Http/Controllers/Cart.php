@@ -36,9 +36,10 @@ class Cart extends Controller
 
     public function removeItem(Request $request, $id)
     {
-        // TODO check if exists in cart
-
         $cart = $request->session()->get('cart', []);
+        if (!isset($cart[$id])) {
+            return response(['errors' => ['id' => 'not in cart']])->setStatusCode(400);
+        }
         unset($cart[$id]);
         $request->session()->set('cart', $cart);
         return $cart;
