@@ -45,17 +45,23 @@
             }
 
             .quantityControls {
+                user-select: none;
                 display: flex;
                 justify-content: space-between;
                 flex-direction: row;
                 width: 100%;
 
-                span {
+                .quantity {
                     width: 40px;
                     text-align: center;
                 }
 
                 .minus, .plus {
+                    img {
+                        margin: 5px;
+                    }
+
+                    cursor: pointer;
                     background: var(--color-secondary-2-4);
                     border-radius: 50%;
                     width: 26px;
@@ -84,14 +90,13 @@
                 display: flex;
                 flex-grow: 1;
                 justify-content: center;
-                cursor: pointer;
             }
 
             .buyBtn {
                 width: 100%;
                 cursor: pointer;
                 justify-content: center;
-                font-weight: 400;
+                font-weight: 600;
                 text-align: center;
                 white-space: nowrap;
                 vertical-align: middle;

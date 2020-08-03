@@ -1,6 +1,9 @@
 <div class="itemContainer">
     <div
         class="goods--item"
+        data-goodsid="{{$goods->id}}"
+        data-goodsPriceUsd="{{$goods->price_usd}}"
+        data-goodsPriceEuro="{{$goods->price_euro}}"
     >
         <div class="">
             <div>
@@ -14,18 +17,14 @@
             </div>
         </div>
         <div class="bottomRow">
-            <div data-goodsPriceUsd="{{$goods->price_usd}}"
-                data-goodsPriceEuro="{{$goods->price_euro}}"
-                class="price">{{$goods->price_euro}}&euro;</div>
+            <div class="price">{{$goods->price_euro}}&euro;</div>
             <div class="buyBtnBox">
                 <div class="quantityControls {{isset($cart[$goods->id])?'':'d-none'}}">
-                    <div class="minus">-</div>
-                    <div>{{ isset($cart[$goods->id])? $cart[$goods->id] : 1}}</div>
-                    <div class="plus">+</div>
+                    <div class="minus"><img src="/icons/chevron-bottom.svg"></div>
+                    <div class="quantity">{{ isset($cart[$goods->id])? $cart[$goods->id] : 1}}</div>
+                    <div class="plus"><img src="/icons/chevron-top.svg"></div>
                 </div>
-                <button data-goodsid="{{$goods->id}}"
-                        type="button"
-                        class="buyBtn {{isset($cart[$goods->id])?'d-none':''}}">BUY</button>
+                <button type="button" class="buyBtn {{isset($cart[$goods->id])?'d-none':''}}">BUY</button>
             </div>
         </div>
 

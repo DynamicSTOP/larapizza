@@ -34,14 +34,22 @@ class Cart extends Controller
     }
 
 
-    public function removeItem(Request $request, $id)
+    public function removeItem(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'id' => ['required', 'exists:goods,id']
+        ]);
+
+        if ($validator->fails()) {
+            return response(['errors' => $validator->errors()])->setStatusCode(400);
+        }
+        $id = $request->input('id');
         $cart = $request->session()->get('cart', []);
         if (!isset($cart[$id])) {
             return response(['errors' => ['id' => 'not in cart']])->setStatusCode(400);
         }
         unset($cart[$id]);
-        $request->session()->set('cart', $cart);
+        $request->session()->put('cart', $cart);
         return $cart;
     }
 }
