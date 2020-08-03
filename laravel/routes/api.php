@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Route::group(['prefix'=>'v1'], function(){
+    Route::group(['prefix'=>'cart'], function(){
+        Route::get('', 'Cart@show');
+        // i don't think splitting into post\put\patch worth the trouble
+        Route::post('', 'Cart@addItem');
+        Route::delete('', 'Cart@removeItem');
+    });
+
+});
+
+
+
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

@@ -1,15 +1,12 @@
-require('./bootstrap');
-
 function updateCartQuantity(cart) {
     let totalInCart = 0;
     const numberElement = document.querySelector('.cartQuantity');
 
-    for(let i in cart){
-        if(!cart.hasOwnProperty(i)){
+    for (let i in cart) {
+        if (!cart.hasOwnProperty(i)) {
             continue;
         }
-        totalInCart+= cart[i];
-
+        totalInCart += cart[i];
     }
 
     if (totalInCart > 0) {
@@ -34,40 +31,42 @@ function toggleQuantityControls(element) {
     }
 }
 
-function addListeners() {
-    const csrf = document.querySelector('meta[name="csrf"]').getAttribute('value');
+function sendCartRequest(element, id, quantity = 1) {
+    // TODO block plus/minus/add buttons
+    fetch('/api/v1/cart', {
+        method: quantity === 0 ? 'DELETE' : 'POST',
+        headers: {'X-CSRF-TOKEN': window.csrf, 'Content-Type': 'application/json'},
+        body: JSON.stringify({id, quantity})
+    })
+        .then((resp) => resp.json())
+        .then((json) => {
+            if (!json.errors) {
+                if (quantity === 0 || element.classList.contains('buyBtn')) {
+                    toggleQuantityControls(element);
+                }
+                element.closest('.buyBtnBox').querySelector('.quantity').innerHTML = quantity;
+                updateCartQuantity(json);
+            } else {
+                console.error(json.errors);
+            }
+        });
+}
 
+function addListeners() {
     Array.from(document.querySelectorAll('.buyBtnBox button'))
         .map((button) => {
             button.onclick = function () {
-                const but = this;
                 const id = this.closest('.goods--item').dataset["id"];
-                fetch('/cart', {
-                    method: 'POST',
-                    headers: {'X-CSRF-TOKEN': csrf, 'Content-Type': 'application/json'},
-                    body: JSON.stringify({id})
-                })
-                    .then((resp) => resp.json())
-                    .then((json) => {
-                        if (!json.errors) {
-                            toggleQuantityControls(but);
-                            updateCartQuantity(json);
-                        } else {
-                            console.error(json.errors);
-                        }
-                    });
+                sendCartRequest(this, id);
             }
         });
 
     Array.from(document.querySelectorAll('.plus, .minus'))
         .map((button) => {
             button.onclick = function () {
-                const but = this;
-                const quantityDiv = this.closest('.quantityControls').querySelector('.quantity');
+                const quantityDiv = this.closest('.buyBtnBox').querySelector('.quantity');
                 let quantity = parseInt(quantityDiv.innerHTML);
-                // TODO block plus minus buttons
-
-                if (but.classList.contains('minus')) {
+                if (this.classList.contains('minus')) {
                     quantity--;
                 } else {
                     quantity++;
@@ -75,28 +74,10 @@ function addListeners() {
                 if (quantity > 20) {
                     return alert('Too many! We don\'t have that much stoves!');
                 }
-
                 const id = this.closest('.goods--item').dataset["id"];
+                sendCartRequest(this, id, quantity);
+            }
 
-                fetch('/cart', {
-                    method: quantity === 0 ? 'DELETE' : 'POST',
-                    headers: {'X-CSRF-TOKEN': csrf, 'Content-Type': 'application/json'},
-                    body: JSON.stringify({id, quantity})
-                })
-                    .then((resp) => resp.json())
-                    .then((json) => {
-                        if (!json.errors) {
-                            if (quantity === 0) {
-                                toggleQuantityControls(but);
-                            } else {
-                                quantityDiv.innerHTML = quantity;
-                            }
-                            updateCartQuantity(json);
-                        } else {
-                            console.error(json.errors);
-                        }
-                    });
-            };
         });
 }
 

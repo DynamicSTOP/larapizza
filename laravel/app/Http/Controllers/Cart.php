@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class Cart extends Controller
 {
@@ -27,9 +28,9 @@ class Cart extends Controller
         $id = $request->input('id');
         $quantity = $request->input('quantity', 1);
 
-        $cart = $request->session()->get('cart', []);
+        $cart = Session::get('cart', []);
         $cart[$id] = $quantity;
-        $request->session()->put('cart', $cart);
+        Session::put('cart', $cart);
         return $cart;
     }
 
