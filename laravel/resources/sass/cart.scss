@@ -2,15 +2,12 @@
     position: relative;
     @include standardButton;
     line-height: 40px;
-    font-size:30px;
+    font-size: 30px;
     height: 100%;
     border-radius: 0 0 5px 0;
     background: var(--color-secondary-2-3);
-    &:hover{
-        background: var(--color-secondary-2-2);
-    }
 
-    .cartQuantity{
+    .cartQuantity {
         position: absolute;
         font-size: 15px;
         left: 37px;
@@ -23,6 +20,65 @@
         width: 20px;
     }
 
+    .cart--details {
+        position: absolute;
+        display: none;
+        right: 0;
+        min-width: 250px;
+        background: var(--color-secondary-2-1);
+        top: 56px;
+
+        .table {
+            text-align: start;
+            line-height: 26px;
+
+            > div > div {
+                padding: 5px 10px;
+                border-left:1px solid #ccc;
+                text-align: right;
+                &:first-child{
+                    text-align: left;
+                    border-left:none;
+                }
+            }
+
+            > div:nth-child(2n+1) {
+                background: var(--color-secondary-2-2);
+            }
+
+        }
+        .total{
+            text-align: right;
+            padding: 5px 10px;
+        }
+
+        .bottomRow {
+            justify-content: space-between;
+        }
+        a {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: var(--color-secondary-2-4);
+            color: #000;
+            text-shadow: none;
+            cursor: pointer;
+            &:hover {
+                background: var(--color-secondary-2-2);
+            }
+        }
+    }
+
+    &:hover, &.active {
+        background: var(--color-secondary-2-2);
+
+        .cart--details {
+            display: flex;
+            font-size: 16px;
+        }
+    }
+
+
     img {
         height: 40px;
         vertical-align: bottom;
@@ -31,16 +87,16 @@
 }
 
 
-.shadow{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
+.shadow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     z-index: 1000;
     background: #000000AA;
 }
 
-.cartPopup{
+.cartPopup {
 
 }

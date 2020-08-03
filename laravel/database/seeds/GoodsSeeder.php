@@ -15,7 +15,7 @@ class GoodsSeeder extends Seeder
         \App\Goods::truncate();
 
         DB::table('goods')->insert([
-            'name' => 'cola',
+            'name' => 'Cola',
             'description' => '2l',
             'image' => '/images/cola.jpg',
             'type' => 'beverages',
@@ -48,7 +48,7 @@ class GoodsSeeder extends Seeder
         }
 
         DB::table('goods')->insert([
-            'name' => 'juice',
+            'name' => 'Juice',
             'description' => '1l',
             'image' => '/images/juice.jpg',
             'type' => 'beverages',
@@ -66,7 +66,7 @@ class GoodsSeeder extends Seeder
         ]);
 
         DB::table('goods')->insert([
-            'name' => 'generic',
+            'name' => 'Generic',
             'description' => 'using placeholder image',
             'image' => '',
             'type' => 'beverages',
