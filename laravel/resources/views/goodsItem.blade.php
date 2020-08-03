@@ -18,7 +18,14 @@
                 data-goodsPriceEuro="{{$goods->price_euro}}"
                 class="price">{{$goods->price_euro}}&euro;</div>
             <div class="buyBtnBox">
-                <button data-goodsid="{{$goods->id}}" type="button" class="buyBtn">BUY</button>
+                <div class="quantityControls {{isset($cart[$goods->id])?'':'d-none'}}">
+                    <div class="minus">-</div>
+                    <div>{{ isset($cart[$goods->id])? $cart[$goods->id] : 1}}</div>
+                    <div class="plus">+</div>
+                </div>
+                <button data-goodsid="{{$goods->id}}"
+                        type="button"
+                        class="buyBtn {{isset($cart[$goods->id])?'d-none':''}}">BUY</button>
             </div>
         </div>
 

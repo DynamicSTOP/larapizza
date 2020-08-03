@@ -9,7 +9,7 @@
     }
 
     .goods--item {
-        background: var(--color-secondary-1-1);
+        background: var(--color-primary-1);
         padding: 15px;
         justify-content: space-between;
         display: flex;
@@ -18,7 +18,7 @@
         border-radius: 3px;
 
         h4 {
-            margin-top:10px;
+            margin-top: 10px;
         }
 
         img {
@@ -33,18 +33,58 @@
             display: flex;
             justify-content: space-between;
             flex-direction: row;
+            height: 38px;
+            line-height: 38px;
+            font-size: 24px;
+
+            font-weight: 600;
 
             .price {
                 margin: auto 0;
-                font-weight: 600;
                 width: 90px;
-                font-size: 24px;
-                line-height: 24px;
+            }
+
+            .quantityControls {
+                display: flex;
+                justify-content: space-between;
+                flex-direction: row;
+                width: 100%;
+
+                span {
+                    width: 40px;
+                    text-align: center;
+                }
+
+                .minus, .plus {
+                    background: var(--color-secondary-2-4);
+                    border-radius: 50%;
+                    width: 26px;
+                    height: 26px;
+                    vertical-align: middle;
+                    line-height: 22px;
+                    display: flex;
+                    margin: auto;
+                    justify-content: center;
+
+                    &:hover {
+                        background: var(--color-secondary-2-3);
+                    }
+                }
+
+                .minus {
+                    background: var(--red);
+
+                    &:hover {
+                        background: var(--red);
+                    }
+                }
             }
 
             .buyBtnBox {
                 display: flex;
                 flex-grow: 1;
+                justify-content: center;
+                cursor: pointer;
             }
 
             .buyBtn {
@@ -62,10 +102,10 @@
                 line-height: 1.5;
                 border-radius: .25rem;
                 transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-                background: var(--color-complement-1);
+                background: var(--color-secondary-2-4);
 
                 &:hover {
-                    background: var(--color-complement-2);
+                    background: var(--color-secondary-2-3);
                 }
 
                 &:active, &:focus {
@@ -78,7 +118,7 @@
 
 .goods--block {
     h1, h2, h3 {
-        color: var(--color-complement-2);
+        color: var(--color-complement-4);
     }
 }
 

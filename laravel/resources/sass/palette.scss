@@ -1,35 +1,36 @@
 // SASS style sheet */
 // Palette color codes */
-// Palette URL: http://paletton.com/#uid=64T1h0kuiiUvNtru4nlwudexs7O */
+// Palette URL: http://paletton.com/#uid=40I1c0kiCFn8GVde7NVmtwSqXtg */
 
 // Feel free to copy&paste color codes to your application */
 
 
 // As hex codes */
 
-$color-primary-0: #5A0763;	// Main Primary color */
-$color-primary-1: #8B039A;
-$color-primary-2: #6F097A;
-$color-primary-3: #3F0145;
-$color-primary-4: #250129;
+$color-primary-0: #FFBF6B;	// Main Primary color */
+$color-primary-1: #FFE1BA;
+$color-primary-2: #FFCF8F;
+$color-primary-3: #FFB24C;
+$color-primary-4: #E99525;
 
-$color-secondary-1-0: #974C08;	// Main Secondary color (1) */
-$color-secondary-1-1: #EB7102;
-$color-secondary-1-2: #BA5F0B;
-$color-secondary-1-3: #693300;
-$color-secondary-1-4: #3E1E00;
+$color-secondary-1-0: #A158C6;	// Main Secondary color (1) */
+$color-secondary-1-1: #DBB2F0;
+$color-secondary-1-2: #BD80DC;
+$color-secondary-1-3: #863AAC;
+$color-secondary-1-4: #711F9B;
 
-$color-secondary-2-0: #0D3363;	// Main Secondary color (2) */
-$color-secondary-2-1: #0E4B9A;
-$color-secondary-2-2: #113F7A;
-$color-secondary-2-3: #062145;
-$color-secondary-2-4: #031429;
+$color-secondary-2-0: #C6F466;	// Main Secondary color (2) */
+$color-secondary-2-1: #E6FCB8;
+$color-secondary-2-2: #D5F88B;
+$color-secondary-2-3: #B9EF47;
+$color-secondary-2-4: #9FDA22;
 
-$color-complement-0: #7F9208;	// Main Complement color */
-$color-complement-1: #C4E401;
-$color-complement-2: #9DB50B;
-$color-complement-3: #586600;
-$color-complement-4: #343C00;
+$color-complement-0: #5894C2;	// Main Complement color */
+$color-complement-1: #B2D4EF;
+$color-complement-2: #80B3DA;
+$color-complement-3: #3977A7;
+$color-complement-4: #206396;
+
 html{
     --color-primary-0: #{$color-primary-0};
     --color-primary-1: #{$color-primary-1};

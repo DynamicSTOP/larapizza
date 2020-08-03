@@ -11,7 +11,7 @@ html, body {
 
 // maybe export into nav? though it's still small
 nav {
-    background: var(--color-secondary-1-2);
+    background: var(--color-primary-0);
 
     a, a:visited {
         @include text-shadow(#EEE);
@@ -27,14 +27,14 @@ nav {
     }
 
     a:hover {
-        color: var(--color-secondary-2-3);
+        color: var(--color-complement-3);
     }
 
 }
 
 .footer{
     padding: 2rem;
-    background: var(--color-secondary-1-2);
+    background: var(--color-primary-0);
 }
 
 @import "goods";
