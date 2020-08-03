@@ -17,7 +17,7 @@ class GoodsSeeder extends Seeder
         DB::table('goods')->insert([
             'name' => 'cola',
             'description' => '2l',
-            'image' => 'cola.jpg',
+            'image' => '/images/cola.jpg',
             'type' => 'beverages',
             'price_usd' => rand(500, 1500) / 100.0,
             'price_euro' => rand(500, 1500) / 100.0,
@@ -40,7 +40,7 @@ class GoodsSeeder extends Seeder
             DB::table('goods')->insert([
                 'name' => $name,
                 'description' => $desc,
-                'image' => 'pizza.jpg',
+                'image' => '/images/pizza.jpg',
                 'type' => 'pizza',
                 'price_usd' => rand(500, 1500) / 100.0,
                 'price_euro' => rand(500, 1500) / 100.0,
@@ -50,7 +50,7 @@ class GoodsSeeder extends Seeder
         DB::table('goods')->insert([
             'name' => 'juice',
             'description' => '1l',
-            'image' => 'juice.jpg',
+            'image' => '/images/juice.jpg',
             'type' => 'beverages',
             'price_usd' => rand(500, 1500) / 100.0,
             'price_euro' => rand(500, 1500) / 100.0,
@@ -59,8 +59,17 @@ class GoodsSeeder extends Seeder
         DB::table('goods')->insert([
             'name' => 'Caesar salad',
             'description' => '200g',
-            'image' => 'caeser.jpg',
+            'image' => '/images/caeser.jpg',
             'type' => 'salads',
+            'price_usd' => rand(500, 1500) / 100.0,
+            'price_euro' => rand(500, 1500) / 100.0,
+        ]);
+
+        DB::table('goods')->insert([
+            'name' => 'generic',
+            'description' => 'using placeholder image',
+            'image' => '',
+            'type' => 'beverages',
             'price_usd' => rand(500, 1500) / 100.0,
             'price_euro' => rand(500, 1500) / 100.0,
         ]);

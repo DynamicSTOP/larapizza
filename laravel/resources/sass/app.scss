@@ -9,6 +9,7 @@ html, body {
     background: var(--color-primary-2);
 }
 
+// maybe export into nav? though it's still small
 nav {
     background: var(--color-primary-1);
 
@@ -30,3 +31,4 @@ nav {
 
 }
 
+@import "goods";
