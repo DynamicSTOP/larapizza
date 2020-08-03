@@ -1,8 +1,5 @@
 <div class="itemContainer">
     <div
-        data-goodsId="{{$goods->id}}"
-        data-goodsPriceUsd="{{$goods->price_usd}}"
-        data-goodsPriceEuro="{{$goods->price_euro}}"
         class="goods--item"
     >
         <div class="">
@@ -17,9 +14,11 @@
             </div>
         </div>
         <div class="bottomRow">
-            <div class="price">{{$goods->price_euro}}&euro;</div>
+            <div data-goodsPriceUsd="{{$goods->price_usd}}"
+                data-goodsPriceEuro="{{$goods->price_euro}}"
+                class="price">{{$goods->price_euro}}&euro;</div>
             <div class="buyBtnBox">
-                <button type="button" class="buyBtn">BUY</button>
+                <button data-goodsid="{{$goods->id}}" type="button" class="buyBtn">BUY</button>
             </div>
         </div>
 

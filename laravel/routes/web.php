@@ -14,3 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Controller@index');
+
+Route::group(['prefix'=>'/cart'], function () {
+    Route::get('', 'Cart@show');
+    // i don't think splitting into post\put\patch worth the trouble
+    Route::post('', 'Cart@addItem');
+    Route::delete('', 'Cart@removeItem');
+});
