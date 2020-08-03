@@ -12,8 +12,6 @@
         background: var(--color-primary-1);
         padding: 15px;
         justify-content: space-between;
-        display: flex;
-        flex-direction: column;
         height: 100%;
         border-radius: 3px;
 
@@ -30,14 +28,11 @@
         .bottomRow {
             width: 100%;
             margin-top: 10px;
-            display: flex;
             justify-content: space-between;
-            flex-direction: row;
             height: 38px;
             line-height: 38px;
             font-size: 24px;
-
-            font-weight: 600;
+            font-weight: 500;
 
             .price {
                 margin: auto 0;
@@ -46,9 +41,7 @@
 
             .quantityControls {
                 user-select: none;
-                display: flex;
                 justify-content: space-between;
-                flex-direction: row;
                 width: 100%;
 
                 .quantity {
@@ -94,21 +87,8 @@
 
             .buyBtn {
                 width: 100%;
-                cursor: pointer;
-                justify-content: center;
-                font-weight: 600;
-                text-align: center;
-                white-space: nowrap;
-                vertical-align: middle;
-                user-select: none;
-                border: 1px solid transparent;
-                padding: .375rem .75rem;
-                font-size: 1rem;
-                line-height: 1.5;
-                border-radius: .25rem;
-                transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+                @include standardButton;
                 background: var(--color-secondary-2-4);
-
                 &:hover {
                     background: var(--color-secondary-2-3);
                 }

@@ -1,0 +1,7 @@
+.cartButton {
+    @include standardButton;
+    background: var(--color-secondary-2-3);
+    &:hover{
+        background: var(--color-secondary-2-2);
+    }
+}
