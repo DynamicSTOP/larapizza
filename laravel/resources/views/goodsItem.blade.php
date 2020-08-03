@@ -18,8 +18,9 @@
         </div>
         <div class="bottomRow">
             <div class="price">{{$goods->price_euro}}&euro;</div>
-            <input class="quantity" type="number" value="1">
-            <button type="button" class="buyBtn">BUY</button>
+            <div class="buyBtnBox">
+                <button type="button" class="buyBtn">BUY</button>
+            </div>
         </div>
 
     </div>

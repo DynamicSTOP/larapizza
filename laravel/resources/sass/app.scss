@@ -6,12 +6,12 @@
 }
 
 html, body {
-    background: var(--color-primary-2);
+    background: var(--color-primary-4);
 }
 
 // maybe export into nav? though it's still small
 nav {
-    background: var(--color-primary-1);
+    background: var(--color-secondary-1-2);
 
     a, a:visited {
         @include text-shadow(#EEE);
@@ -22,6 +22,7 @@ nav {
 
         &.navbar-brand {
             font-weight: 800;
+            font-size: 30px;
         }
     }
 
@@ -33,7 +34,7 @@ nav {
 
 .footer{
     padding: 2rem;
-    background: var(--color-primary-1);
+    background: var(--color-secondary-1-2);
 }
 
 @import "goods";

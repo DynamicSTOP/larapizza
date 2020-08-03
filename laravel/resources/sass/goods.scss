@@ -9,12 +9,17 @@
     }
 
     .goods--item {
-        background: var(--color-secondary-1-2);
+        background: var(--color-secondary-1-1);
         padding: 15px;
         justify-content: space-between;
         display: flex;
         flex-direction: column;
         height: 100%;
+        border-radius: 3px;
+
+        h4 {
+            margin-top:10px;
+        }
 
         img {
             width: 100%;
@@ -29,28 +34,23 @@
             justify-content: space-between;
             flex-direction: row;
 
-            .quantity {
-                width: 40px;
-                margin: 0 15px;
-                background: none;
-                border: none;
-                cursor: pointer;
-
-                &:active, &:focus {
-                    background: none;
-                    border: none;
-                    outline: none;
-                }
+            .price {
+                margin: auto 0;
+                font-weight: 600;
+                width: 90px;
+                font-size: 24px;
+                line-height: 24px;
             }
 
-            .price {
-                margin: auto;
-                font-weight: 600;
+            .buyBtnBox {
+                display: flex;
+                flex-grow: 1;
             }
 
             .buyBtn {
-                display: inline-block;
+                width: 100%;
                 cursor: pointer;
+                justify-content: center;
                 font-weight: 400;
                 text-align: center;
                 white-space: nowrap;
@@ -62,11 +62,12 @@
                 line-height: 1.5;
                 border-radius: .25rem;
                 transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-                background: var(--color-complement-2);
+                background: var(--color-complement-1);
 
                 &:hover {
-                    background: var(--color-complement-3);
+                    background: var(--color-complement-2);
                 }
+
                 &:active, &:focus {
                     outline: none;
                 }
@@ -75,6 +76,13 @@
     }
 }
 
+.goods--block {
+    h1, h2, h3 {
+        color: var(--color-complement-2);
+    }
+}
+
 .goods--block + .goods--block {
     margin-top: 40px;
 }
+
