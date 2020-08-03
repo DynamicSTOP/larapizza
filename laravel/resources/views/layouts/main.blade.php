@@ -8,7 +8,7 @@
     <title>@yield('title', 'LARA PIZZA')</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
-    <script type="text/javascript">window.csrf=@json('csrf');</script>
+    <script type="text/javascript">window.csrf='{{csrf_token()}}';</script>
     <script src="/js/app.js" type="text/javascript" defer></script>
 </head>
 <body>

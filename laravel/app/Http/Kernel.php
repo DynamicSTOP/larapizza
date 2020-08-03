@@ -42,10 +42,6 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-
-            // not recommended, but for the purpose of demo should be ok
-            // since i'm not planing adding api_keys
-            \Illuminate\Session\Middleware\StartSession::class,
         ],
     ];
 

@@ -52,32 +52,36 @@ function sendCartRequest(element, id, quantity = 1) {
         });
 }
 
+function addToCart(){
+    const id = this.closest('.goods--item').dataset["id"];
+    sendCartRequest(this, id);
+}
+
+function updateQuantity(){
+    const quantityDiv = this.closest('.buyBtnBox').querySelector('.quantity');
+    let quantity = parseInt(quantityDiv.innerHTML);
+    if (this.classList.contains('minus')) {
+        quantity--;
+    } else {
+        quantity++;
+    }
+    if (quantity > 20) {
+        return alert('Too many! We don\'t have that much stoves!');
+    }
+    const id = this.closest('.goods--item').dataset["id"];
+    sendCartRequest(this, id, quantity);
+}
+
+
 function addListeners() {
     Array.from(document.querySelectorAll('.buyBtnBox button'))
         .map((button) => {
-            button.onclick = function () {
-                const id = this.closest('.goods--item').dataset["id"];
-                sendCartRequest(this, id);
-            }
+            button.onclick = addToCart;
         });
 
     Array.from(document.querySelectorAll('.plus, .minus'))
         .map((button) => {
-            button.onclick = function () {
-                const quantityDiv = this.closest('.buyBtnBox').querySelector('.quantity');
-                let quantity = parseInt(quantityDiv.innerHTML);
-                if (this.classList.contains('minus')) {
-                    quantity--;
-                } else {
-                    quantity++;
-                }
-                if (quantity > 20) {
-                    return alert('Too many! We don\'t have that much stoves!');
-                }
-                const id = this.closest('.goods--item').dataset["id"];
-                sendCartRequest(this, id, quantity);
-            }
-
+            button.onclick = updateQuantity;
         });
 }
 
