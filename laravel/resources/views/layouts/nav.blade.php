@@ -1,4 +1,4 @@
-<nav class="row">
+<nav class="container row">
     <div class="navbar-brand">
         <a href="/">LARA PIZZA</a>
     </div>
