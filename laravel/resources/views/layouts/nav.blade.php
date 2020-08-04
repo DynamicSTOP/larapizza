@@ -5,10 +5,12 @@
     <div class="row">
         <div class="cartButton">
             <img src="/icons/cart.svg">
-            <span class=" @if($cartQuantity === 0) d-none @endif cartQuantity">{{$cartQuantity}}</span>
+            <span class=" @unless(isset($cartQuantity) && $cartQuantity !== 0) d-none @endif cartQuantity">{{$cartQuantity??''}}</span>
             Cart
             <div class="cart--details column">
-                @include('partial.cartDetails')
+                @if(isset($cartQuantity) && $cartQuantity !== 0)
+                    @include('partial.cartDetails')
+                @endif
             </div>
         </div>
 
