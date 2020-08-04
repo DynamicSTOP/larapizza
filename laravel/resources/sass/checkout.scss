@@ -34,6 +34,10 @@
         &.long {
             min-width: 400px;
         }
+
+        .is-invalid {
+            border: 2px solid var(--red);
+        }
     }
 
     textarea {
@@ -44,8 +48,9 @@
         max-width: 100%;
     }
 
-    .half{
+    .half {
         width: 50%;
+
         &.currencyBox {
             width: 50%;
             margin: auto 20px;
@@ -55,4 +60,20 @@
 
     }
 
+
+
+}
+
+.order {
+    justify-content: center;
+    button{
+        @include standardButton;
+        width:30%;
+        line-height: 2;
+        background: var(--color-complement-2);
+        transition: background 0.5s;
+        &:hover{
+            background: var(--color-complement-1);
+        }
+    }
 }

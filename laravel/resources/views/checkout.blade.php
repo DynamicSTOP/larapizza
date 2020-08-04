@@ -12,6 +12,7 @@
                                value=""
                                name="first_name"
                                placeholder="First name"
+                               required
                         >
 
                     </div>
@@ -21,6 +22,7 @@
                                value=""
                                name="last_name"
                                placeholder="Last name"
+                               required
                         >
                     </div>
                 </div>
@@ -36,6 +38,7 @@
                            value=""
                            name="address"
                            placeholder="Address"
+                           required
                     >
                     @error('address')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -49,6 +52,7 @@
                                value=""
                                name="phone"
                                placeholder="Phone"
+                               required
                         >
                     </div>
 
@@ -61,6 +65,7 @@
                                    value="euro"
                                    checked
                                    name="currency"
+                                   required
                             >
                         </div>
                         <div>
@@ -70,6 +75,7 @@
                                    type="radio"
                                    value="usd"
                                    name="currency"
+                                   required
                             >
                         </div>
                     </div>
@@ -94,7 +100,7 @@
                 @include('partial.cartDetails')
             </div>
         </div>
-        <div class="row">
+        <div class="row order">
             <button class="submit" type="submit">Order</button>
         </div>
     </form>

@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'Controller@index');
-Route::get('/checkout', 'CheckoutController@show');
+
+Route::group(['prefix'=>'/checkout'], function(){
+    Route::get('', 'CheckoutController@show');
+    Route::post('', 'CheckoutController@order');
+});
+
 
 
 Route::group(['prefix'=>'api'], function(){

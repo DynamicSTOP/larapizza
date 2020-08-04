@@ -2,7 +2,7 @@
     $total = 0;
 @endphp
 <div class="table">
-    @if(count($cartData['goods']) > 0 )
+    @if(isset($cartData) && count($cartData['goods']) > 0 )
         @foreach($cartData['goods'] as $goods)
             @php
                 $total += $goods->price_euro * $cartData['cart'][$goods->id];
@@ -15,8 +15,18 @@
             </div>
         @endforeach
     @endif
+    @if(isset($delivery))
+        @php
+        $total += $delivery;
+        @endphp
+        <div class="row">
+            <div>Delivery</div>
+            <div></div><div></div>
+            <div>@money($delivery)&euro;</div>
+        </div>
+    @endif
 </div>
 <div class="total">Total: @money($total)&euro;</div>
 @unless(isset($hideCheckoutLink))
-<div><a href="/checkout">Checkout</a></div>
+    <div><a href="/checkout">Checkout</a></div>
 @endunless

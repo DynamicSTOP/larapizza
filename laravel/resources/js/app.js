@@ -67,10 +67,6 @@ function updateQuantity() {
     sendCartRequest(this, id, quantity);
 }
 
-function updateCartRow(create = false, data) {
-    console.log(create, data, this);
-}
-
 function addListeners() {
     cartButton = document.querySelector('.cartButton');
     numberElement = cartButton.querySelector('.cartQuantity');
