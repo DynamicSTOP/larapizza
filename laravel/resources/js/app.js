@@ -67,6 +67,45 @@ function updateQuantity() {
     sendCartRequest(this, id, quantity);
 }
 
+function toggleCurrency() {
+    const currencyEl = this;
+    // technically can save into local storage and change onload
+    // then send with order request but this should be more simple
+    fetch('/api/v1/toggleCurrency', {
+        method: "POST",
+        headers: {'X-CSRF-TOKEN': window.csrf},
+    }).then((resp) => resp.json())
+        .then((json) => {
+            if (!json.errors) {
+
+                Array.from(document.querySelectorAll('[data-price_usd]')).map((el) => {
+                    if (json.currency === 'euro') {
+                        el.innerHTML = el.dataset['price_euro'] + '&euro;';
+                    } else {
+                        el.innerHTML = el.dataset['price_usd'] + '&dollar;';
+                    }
+                });
+
+                if (json.currency === 'euro') {
+                    currencyEl.innerHTML = '&euro;';
+                    const input_euro = document.querySelector('input#euro');
+                    if (input_euro) {
+                        input_euro.checked = true;
+                    }
+                } else {
+                    currencyEl.innerHTML = '&dollar;';
+                    const input_usd = document.querySelector('input#usd');
+                    if (input_usd) {
+                        input_usd.checked = true;
+                    }
+                }
+            } else {
+                console.error(json.errors);
+            }
+        });
+}
+
+
 function addListeners() {
     cartButton = document.querySelector('.cartButton');
     numberElement = cartButton.querySelector('.cartQuantity');
@@ -80,6 +119,12 @@ function addListeners() {
         .map((button) => {
             button.onclick = updateQuantity;
         });
+
+    document.querySelector('nav .currency').onclick = toggleCurrency;
+
+    Array.from(document.querySelectorAll('input#euro, input#usd')).map((el) => {
+        el.onchange = toggleCurrency;
+    });
 }
 
 

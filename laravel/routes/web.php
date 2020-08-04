@@ -30,6 +30,6 @@ Route::group(['prefix'=>'api'], function(){
             Route::post('', 'Cart@addItem');
             Route::delete('', 'Cart@removeItem');
         });
-
+        Route::post('/toggleCurrency', 'Controller@toggleCurrency');
     });
 });

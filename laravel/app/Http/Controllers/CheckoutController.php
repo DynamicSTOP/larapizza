@@ -16,10 +16,13 @@ class CheckoutController extends Controller
         if (count($cart) === 0) {
             return redirect()->route('index');
         }
-        $delivery = $request->session()->get('delivery');
-        if (empty($delivery)) {
-            $delivery = rand(40, 150) * 10;
-            $request->session()->put('delivery', $delivery);
+        $delivery_euro = $request->session()->get('delivery_euro');
+        $delivery_usd = $request->session()->get('delivery_usd');
+        if (empty($delivery_euro)) {
+            $delivery_euro = rand(40, 150) * 10;
+            $request->session()->put('delivery_euro', $delivery_euro);
+            $delivery_usd = rand(40, 150) * 10;
+            $request->session()->put('delivery_usd', $delivery_usd);
         }
         $data = [
             'cartData' => \App\Cart::buildCartData(),
@@ -27,7 +30,8 @@ class CheckoutController extends Controller
                 return $v + $e;
             }, 0),
             'hideCheckoutLink' => true,
-            'delivery' => $delivery,
+            'delivery_euro' => $delivery_euro,
+            'delivery_usd' => $delivery_usd,
         ];
 
         if ($errors) {
@@ -47,7 +51,7 @@ class CheckoutController extends Controller
     {
         $cart = \App\Cart::buildCartData();
         if (count($cart['goods']) === 0) {
-            //dead session
+            // TODO dead session, maybe middleware can help here
             return redirect()->route('index');
         }
 
@@ -62,8 +66,7 @@ class CheckoutController extends Controller
 
         $orderData['last_name'] = $orderData['region_id'] ?? '';
         $orderData['comment'] = $orderData['comment'] ?? '';
-        $orderData['delivery'] = $request->session()->get('delivery');
-
+        $orderData['delivery'] = $request->session()->get($orderData['currency'] === 'euro' ? 'delivery_euro' : 'delivery_usd');
 
         DB::beginTransaction();
         $order = new Order($orderData);
