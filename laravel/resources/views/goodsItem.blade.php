@@ -2,10 +2,6 @@
     <div
         class="goods--item column"
         data-id="{{$goods->id}}"
-        data-price_usd="{{$goods->price_usd}}"
-        data-price_euro="{{$goods->price_euro}}"
-        data-type="{{$goods->type}}"
-        data-name=@json($goods->name)
     >
         <div>
             <div>
@@ -19,7 +15,10 @@
             </div>
         </div>
         <div class="bottomRow row">
-            <div class="price">@money($goods->price_euro)&euro;</div>
+            <div class="price"
+                 data-price_usd="@moneyNC($goods->price_usd)"
+                 data-price_euro="@moneyNC($goods->price_euro)"
+            >@money($goods->getPrice())</div>
             <div class="buyBtnBox">
                 <div class="quantityControls row {{isset($cartData['cart'][$goods->id])?'':'d-none'}}">
                     <div class="minus"><img src="/icons/chevron-bottom.svg"></div>

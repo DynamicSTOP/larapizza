@@ -62,7 +62,7 @@
                                    class="@error('currency') is-invalid @enderror"
                                    type="radio"
                                    value="euro"
-                                   @if(old('currency')==='euro')
+                                   @if(Session::get('currency','euro')==='euro')
                                    checked
                                    @endif
                                    name="currency"
@@ -75,7 +75,7 @@
                                    class="@error('currency') is-invalid @enderror"
                                    type="radio"
                                    value="usd"
-                                   @if(old('currency')==='usd')
+                                   @if(Session::get('currency','euro')==='usd')
                                    checked
                                    @endif
                                    name="currency"

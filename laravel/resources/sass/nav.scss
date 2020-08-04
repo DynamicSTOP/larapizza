@@ -26,7 +26,7 @@ nav {
     .navbar-brand {
         font-weight: 900;
         font-size: 30px;
-        margin: 10px 20px;
+        margin: 5px 20px;
     }
 
     a:hover {
@@ -41,6 +41,27 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
+
+    .currency{
+        cursor: pointer;
+        margin: 0 5px;
+        font-size: 30px;
+        padding: 5px;
+        background: var(--color-secondary-2-0);
+        transition: background 0.3s;
+        width: 44px;
+        font-weight: 500;
+        vertical-align: middle;
+        height: 100%;
+        line-height: 42px;
+        text-align: center;
+        user-select: none;
+
+        &:hover {
+            background: var(--color-secondary-2-2);
+        }
+    }
+
 }
 
 body > .container {

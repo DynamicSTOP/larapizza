@@ -15,14 +15,28 @@ class Controller extends BaseController
 
     public function index(Request $request)
     {
-        $cart = $request->session()->get('cart',[]);
+        $cart = $request->session()->get('cart', []);
 
         return view('index', [
             'cartData' => \App\Cart::buildCartData(),
-            'cartQuantity' => array_reduce ( $cart ,  function($v, $e){ return $v+$e; }, 0 ),
+            'cartQuantity' => array_reduce($cart, function ($v, $e) {
+                return $v + $e;
+            }, 0),
             'pizzas' => Goods::getAllPizzas(),
             'salads' => Goods::getAllSalads(),
             'beverages' => Goods::getAllBeverages()
         ]);
+    }
+
+    public function toggleCurrency(Request $request)
+    {
+        $currency = $request->session()->get('currency', 'euro');
+        if ($currency === 'euro') {
+            $currency = 'usd';
+        } else {
+            $currency = 'euro';
+        }
+        $request->session()->put('currency', $currency);
+        return ['currency' => $currency];
     }
 }

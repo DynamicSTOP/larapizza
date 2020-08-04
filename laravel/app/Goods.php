@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 
 class Goods extends Model
 {
@@ -32,5 +33,14 @@ class Goods extends Model
             return '/images/placeholder.jpg';
         }
         return $this->image;
+    }
+
+    public function getPrice(){
+        $currency = Session::get('currency', 'euro');
+        if ($currency === 'euro') {
+            return $this->price_euro;
+        } else {
+            return $this->price_usd;
+        }
     }
 }
