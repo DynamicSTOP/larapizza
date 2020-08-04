@@ -17,4 +17,6 @@
     @endif
 </div>
 <div class="total">Total: @money($total)&euro;</div>
+@unless(isset($hideCheckoutLink))
 <div><a href="/checkout">Checkout</a></div>
+@endunless

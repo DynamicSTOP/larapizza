@@ -1,0 +1,49 @@
+.checkout {
+    justify-content: center;
+    >div{
+        margin:10px;
+        max-width: 50%;
+    }
+    .clientInfo {
+        //flex-grow: 1;
+        justify-content: space-between;
+
+    }
+    label, input[type='radio']{
+        cursor: pointer;
+    }
+
+    .details {
+        background: var(--color-secondary-2-1);
+        align-self: flex-start;
+    }
+
+    input[type='text'], textarea {
+        padding: 10px;
+        outline: none;
+        border: 1px solid var(--color-primary-4);
+        border-radius: 5px;
+        min-width: 200px;
+        font-size:18px;
+
+        &.long {
+            min-width: 400px;
+        }
+    }
+    textarea{
+        height: 100%;
+        min-height: 80px;
+
+        width:100%;
+        max-width: 100%;
+    }
+
+    .half{
+        .currencyBox {
+            width: 50%;
+            margin: auto 20px;
+            justify-content: space-between;
+            display: flex;
+        }
+    }
+}

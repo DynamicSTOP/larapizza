@@ -13,6 +13,7 @@ class CheckoutController extends Controller
         return view('checkout',[
             'cartData' => \App\Cart::buildCartData(),
             'cartQuantity' => array_reduce ( $cart ,  function($v, $e){ return $v+$e; }, 0 ),
+            'hideCheckoutLink' => true
         ]);
     }
 }
