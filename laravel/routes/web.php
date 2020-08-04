@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Controller@index');
+Route::get('/', 'Controller@index')->name('index');
 
 Route::group(['prefix'=>'/checkout'], function(){
-    Route::get('', 'CheckoutController@show');
+    Route::get('', 'CheckoutController@show')->name('checkout');
     Route::post('', 'CheckoutController@order');
 });
 

@@ -20,11 +20,13 @@ class CreateOrdersTable extends Migration
             $table->string('last_name')->nullable(false);
             $table->string('address')->nullable(false);
             $table->integer('phone')->nullable(false);
-            $table->text('comment')->default('');
+            $table->text('comment')->nullable(true);
 
             $table->string('currency')->nullable(false)->default('euro');
+            $table->integer('delivery')->nullable(false);
 
-            $table->integer('user_id')->nullable(true);
+            $table->unsignedBigInteger('user_id')->nullable(true);
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });

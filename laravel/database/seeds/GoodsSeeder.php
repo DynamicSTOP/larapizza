@@ -12,7 +12,6 @@ class GoodsSeeder extends Seeder
     public function run()
     {
         //
-        \App\Goods::truncate();
 
         DB::table('goods')->insert([
             'name' => 'Cola',

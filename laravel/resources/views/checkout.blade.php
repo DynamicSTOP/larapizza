@@ -9,9 +9,9 @@
                     <div class="half">
                         <input class="@error('first_name') is-invalid @enderror"
                                type="text"
-                               value=""
+                               value="{{ old('first_name') }}"
                                name="first_name"
-                               placeholder="First name"
+                               placeholder="First name*"
                                required
                         >
 
@@ -19,10 +19,9 @@
                     <div class="half">
                         <input class="@error('last_name') is-invalid @enderror"
                                type="text"
-                               value=""
+                               value="{{old('last_name')}}"
                                name="last_name"
                                placeholder="Last name"
-                               required
                         >
                     </div>
                 </div>
@@ -35,9 +34,9 @@
                 <div>
                     <input class="@error('address') is-invalid @enderror long"
                            type="text"
-                           value=""
+                           value="{{old('address')}}"
                            name="address"
-                           placeholder="Address"
+                           placeholder="Address*"
                            required
                     >
                     @error('address')
@@ -49,9 +48,9 @@
                     <div class="half">
                         <input class="@error('phone') is-invalid @enderror"
                                type="text"
-                               value=""
+                               value="{{old('phone')}}"
                                name="phone"
-                               placeholder="Phone"
+                               placeholder="Phone*"
                                required
                         >
                     </div>
@@ -63,7 +62,9 @@
                                    class="@error('currency') is-invalid @enderror"
                                    type="radio"
                                    value="euro"
+                                   @if(old('currency')==='euro')
                                    checked
+                                   @endif
                                    name="currency"
                                    required
                             >
@@ -74,6 +75,9 @@
                                    class="@error('currency') is-invalid @enderror"
                                    type="radio"
                                    value="usd"
+                                   @if(old('currency')==='usd')
+                                   checked
+                                   @endif
                                    name="currency"
                                    required
                             >
@@ -92,7 +96,7 @@
                     <textarea name="comment"
                               class="long"
                               id="comment"
-                              placeholder="Comment"></textarea>
+                              placeholder="Comment">{{old('comment')}}</textarea>
                 </div>
 
             </div>

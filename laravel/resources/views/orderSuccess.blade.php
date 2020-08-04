@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div>
-        Your order has been placed!
+        <p>Your order has been placed!</p>
+        <p>Order number is {{$order->id}}</p>
     </div>
 @endsection
