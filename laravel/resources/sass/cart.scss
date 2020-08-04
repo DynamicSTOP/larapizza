@@ -27,6 +27,8 @@
         min-width: 250px;
         background: var(--color-secondary-2-1);
         top: 56px;
+        border-bottom-right-radius: .25rem;
+        border-bottom-left-radius: .25rem;
 
         .table {
             text-align: start;
@@ -34,20 +36,23 @@
 
             > div > div {
                 padding: 5px 10px;
-                border-left:1px solid #ccc;
+                border-left: 1px solid #ccc;
                 text-align: right;
-                &:first-child{
+
+                &:first-child {
                     text-align: left;
-                    border-left:none;
+                    border-left: none;
                 }
             }
+
 
             > div:nth-child(2n+1) {
                 background: var(--color-secondary-2-2);
             }
 
         }
-        .total{
+
+        .total {
             text-align: right;
             padding: 5px 10px;
         }
@@ -55,6 +60,7 @@
         .bottomRow {
             justify-content: space-between;
         }
+
         a {
             width: 100%;
             height: 100%;
@@ -63,13 +69,16 @@
             color: #000;
             text-shadow: none;
             cursor: pointer;
+            border-bottom-right-radius: .25rem;
+            border-bottom-left-radius: .25rem;
+
             &:hover {
                 background: var(--color-secondary-2-2);
             }
         }
     }
 
-    &:hover, &.active {
+    &:not(.empty):hover, &:not(.empty).active {
         background: var(--color-secondary-2-2);
 
         .cart--details {

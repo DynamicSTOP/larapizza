@@ -1,6 +1,9 @@
 // maybe export into nav? though it's still small
 nav {
     background: var(--color-primary-0);
+    &.row{
+        padding: 0;
+    }
 
     a, a:visited {
         @include text-shadow(#EEE);
@@ -34,4 +37,7 @@ nav {
 
 body > .container {
     margin-top: 120px;
+    @include phone{
+        margin-top: 80px;
+    }
 }

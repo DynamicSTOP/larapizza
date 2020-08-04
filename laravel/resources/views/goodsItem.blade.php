@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="bottomRow row">
-            <div class="price">{{$goods->price_euro}}&euro;</div>
+            <div class="price">@money($goods->price_euro)&euro;</div>
             <div class="buyBtnBox">
                 <div class="quantityControls row {{isset($cartData['cart'][$goods->id])?'':'d-none'}}">
                     <div class="minus"><img src="/icons/chevron-bottom.svg"></div>

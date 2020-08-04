@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 class Cart extends Controller
 {
@@ -31,7 +32,10 @@ class Cart extends Controller
         $cart = Session::get('cart', []);
         $cart[$id] = $quantity;
         Session::put('cart', $cart);
-        return $cart;
+        return [
+            'totalInCart'=>array_reduce ( $cart ,  function($t, $e){ return $t+$e; }, 0 ),
+            'html' => View::make('partial.cartDetails', ['cartData' => \App\Cart::buildCartData()])->render()
+        ];
     }
 
 
@@ -51,6 +55,9 @@ class Cart extends Controller
         }
         unset($cart[$id]);
         $request->session()->put('cart', $cart);
-        return $cart;
+        return [
+            'totalInCart'=>array_reduce ( $cart ,  function($t, $e){ return $t+$e; }, 0 ),
+            'html' => View::make('partial.cartDetails', ['cartData' => \App\Cart::buildCartData()])->render()
+        ];
     }
 }

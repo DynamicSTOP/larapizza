@@ -113,6 +113,13 @@
     h1, h2, h3 {
         color: var(--color-complement-4);
     }
+
+    h2{
+        font-size: 30px;
+        line-height: 30px;
+        margin-left:15px;
+    }
+
 }
 
 .goods--block + .goods--block {

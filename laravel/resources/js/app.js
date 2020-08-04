@@ -1,19 +1,13 @@
-function updateCartQuantity(cart) {
-    let totalInCart = 0;
-    const numberElement = document.querySelector('.cartQuantity');
+let cartButton, numberElement;
 
-    for (let i in cart) {
-        if (!cart.hasOwnProperty(i)) {
-            continue;
-        }
-        totalInCart += cart[i];
-    }
-
+function updateCartQuantity(totalInCart) {
     if (totalInCart > 0) {
         numberElement.classList.remove('d-none');
         numberElement.innerHTML = totalInCart;
+        cartButton.classList.remove('empty');
     } else {
         numberElement.classList.add('d-none');
+        cartButton.classList.add('empty');
     }
 }
 
@@ -45,19 +39,20 @@ function sendCartRequest(element, id, quantity = 1) {
                     toggleQuantityControls(element);
                 }
                 element.closest('.buyBtnBox').querySelector('.quantity').innerHTML = quantity;
-                updateCartQuantity(json);
+                updateCartQuantity(json.totalInCart);
+                cartButton.querySelector('.cart--details').innerHTML = json.html;
             } else {
                 console.error(json.errors);
             }
         });
 }
 
-function addToCart(){
+function addToCart() {
     const id = this.closest('.goods--item').dataset["id"];
     sendCartRequest(this, id);
 }
 
-function updateQuantity(){
+function updateQuantity() {
     const quantityDiv = this.closest('.buyBtnBox').querySelector('.quantity');
     let quantity = parseInt(quantityDiv.innerHTML);
     if (this.classList.contains('minus')) {
@@ -72,8 +67,14 @@ function updateQuantity(){
     sendCartRequest(this, id, quantity);
 }
 
+function updateCartRow(create = false, data) {
+    console.log(create, data, this);
+}
 
 function addListeners() {
+    cartButton = document.querySelector('.cartButton');
+    numberElement = cartButton.querySelector('.cartQuantity');
+
     Array.from(document.querySelectorAll('.buyBtnBox button'))
         .map((button) => {
             button.onclick = addToCart;
