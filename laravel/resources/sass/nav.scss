@@ -1,8 +1,16 @@
 // maybe export into nav? though it's still small
 nav {
     background: var(--color-primary-0);
-    &.row{
+
+    &.row {
         padding: 0;
+        margin-left: -15px;
+        @include tablet{
+            margin-left: 0;
+        }
+        @include phone{
+            margin-left: 0;
+        }
     }
 
     a, a:visited {
@@ -36,8 +44,14 @@ nav {
 }
 
 body > .container {
-    margin-top: 120px;
-    @include phone{
-        margin-top: 80px;
+    padding-top: 120px;
+    min-height: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include phone {
+        padding-top: 80px;
+
     }
 }
