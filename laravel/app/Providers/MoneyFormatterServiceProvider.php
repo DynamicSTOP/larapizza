@@ -27,6 +27,14 @@ class MoneyFormatterServiceProvider extends ServiceProvider
         //
         Blade::directive('money', function ($money) {
             return "<?php " .
+            "if (($money) % 100 === 0){ echo ($money) / 100;}" .
+            "else if (($money) % 10 === 0){ echo (($money) / 100.0) . '0';}" .
+            "else { echo ($money) / 100.0;}" .
+            "echo Session::get('currency', 'euro') === 'euro' ? '&euro;' : '&dollar;';".
+            "?>";
+        });
+        Blade::directive('moneyNC', function ($money) {
+            return "<?php " .
                 "if (($money) % 100 === 0){ echo ($money) / 100;}" .
                 "else if (($money) % 10 === 0){ echo (($money) / 100.0) . '0';}" .
                 "else { echo ($money) / 100.0;}" .
