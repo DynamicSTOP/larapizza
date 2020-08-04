@@ -5,8 +5,8 @@
         @csrf
         <div class="row checkout">
             <div class="clientInfo column">
-                <div class="row" >
-                    <div>
+                <div class="row">
+                    <div class="half">
                         <input class="@error('first_name') is-invalid @enderror"
                                type="text"
                                value=""
@@ -15,7 +15,7 @@
                         >
 
                     </div>
-                    <div>
+                    <div class="half">
                         <input class="@error('last_name') is-invalid @enderror"
                                type="text"
                                value=""
@@ -42,8 +42,8 @@
                     @enderror
                 </div>
 
-                <div class="row half">
-                    <div>
+                <div class="row">
+                    <div class="half">
                         <input class="@error('phone') is-invalid @enderror"
                                type="text"
                                value=""
@@ -52,7 +52,7 @@
                         >
                     </div>
 
-                    <div class="currencyBox row">
+                    <div class="half currencyBox row">
                         <div>
                             <label for="euro">EURO</label>
                             <input id="euro"
