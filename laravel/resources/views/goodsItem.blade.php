@@ -1,11 +1,13 @@
 <div class="itemContainer">
     <div
-        data-goodsId="{{$goods->id}}"
-        data-goodsPriceUsd="{{$goods->price_usd}}"
-        data-goodsPriceEuro="{{$goods->price_euro}}"
-        class="goods--item"
+        class="goods--item column"
+        data-id="{{$goods->id}}"
+        data-price_usd="{{$goods->price_usd}}"
+        data-price_euro="{{$goods->price_euro}}"
+        data-type="{{$goods->type}}"
+        data-name=@json($goods->name)
     >
-        <div class="">
+        <div>
             <div>
                 <img src="{{$goods->getImage()}}">
             </div>
@@ -16,10 +18,15 @@
                 {{$goods->description}}
             </div>
         </div>
-        <div class="bottomRow">
-            <div class="price">{{$goods->price_euro}}&euro;</div>
+        <div class="bottomRow row">
+            <div class="price">@money($goods->price_euro)&euro;</div>
             <div class="buyBtnBox">
-                <button type="button" class="buyBtn">BUY</button>
+                <div class="quantityControls row {{isset($cartData['cart'][$goods->id])?'':'d-none'}}">
+                    <div class="minus"><img src="/icons/chevron-bottom.svg"></div>
+                    <div class="quantity">{{ isset($cartData['cart'][$goods->id])? $cartData['cart'][$goods->id] : 1}}</div>
+                    <div class="plus"><img src="/icons/chevron-top.svg"></div>
+                </div>
+                <button type="button" class="buyBtn {{isset($cartData['cart'][$goods->id])?'d-none':''}}">BUY</button>
             </div>
         </div>
 

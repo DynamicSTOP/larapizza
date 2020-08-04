@@ -5,36 +5,114 @@
     text-shadow: 0 1px 1px $shadow, 0 -1px 1px $shadow, 1px 0 1px $shadow, -1px 0 1px $shadow;
 }
 
+@mixin phone {
+    @media (max-width: 425px) {
+        @content
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 426px) and (max-width: 1023px) {
+        @content
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content
+    }
+}
+
+@mixin standardButton {
+    cursor: pointer;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: .375rem .75rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    font: 500 1rem "Roboto";
+}
+
 html, body {
     background: var(--color-primary-4);
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
-// maybe export into nav? though it's still small
-nav {
-    background: var(--color-secondary-1-2);
+*, ::after, ::before {
+    box-sizing: border-box;
+}
 
-    a, a:visited {
-        @include text-shadow(#EEE);
-        font-weight: 600;
-        cursor: pointer;
-        text-decoration: none;
-        color: var(--color-complement-4);
+.row {
+    display: flex;
+    flex-direction: row;
+}
 
-        &.navbar-brand {
-            font-weight: 800;
-            font-size: 30px;
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.table {
+    display: table;
+    > div {
+        display: table-row;
+        > div {
+            display: table-cell;
         }
     }
-
-    a:hover {
-        color: var(--color-secondary-2-3);
-    }
-
 }
 
-.footer{
+
+.d-none {
+    display: none !important;
+}
+
+.footer {
     padding: 2rem;
-    background: var(--color-secondary-1-2);
+    background: var(--color-primary-0);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@include phone {
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+@include tablet {
+    .container {
+        width: 100%;
+        padding: 0;
+    }
+}
+
+@include desktop {
+    .container {
+
+        padding-right: 15px;
+        padding-left: 15px;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@import "nav";
+@import "cart";
 @import "goods";
