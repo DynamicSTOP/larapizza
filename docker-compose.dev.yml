@@ -1,0 +1,71 @@
+version: '3'
+
+services:
+  web:
+    tty: true
+    image: nginx:1.19
+    env_file:
+      - .env
+    volumes:
+      - "${PWD}:/var/www/web"
+      - "${PWD}/conf/nginx.conf:/etc/nginx/nginx.conf:ro"
+      - "${PWD}/conf/site.conf:/etc/nginx/conf.d/default.conf:ro"
+    networks:
+      app_net:
+        ipv4_address: 172.28.5.40
+    hostname: "web-docker"
+    user: "${CONTAINER_USER}:${CONTAINER_GROUP}"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10mb"
+        max-file: "5"
+    command: ['nginx', '-g', 'daemon off;']
+    #    command: ['nginx-debug', '-g', 'daemon off;']
+#    ports:
+#      - "80:8080"
+    depends_on:
+      - php
+
+  php:
+    build: .
+    tty: true
+    image: web-php:2
+    hostname: "php-docker"
+    env_file:
+      - .env
+    volumes:
+      - "${PWD}:/var/www/web"
+      - "${PWD}/conf/php.ini:/usr/local/etc/php/php.ini:ro"
+    user: "${CONTAINER_USER}:${CONTAINER_GROUP}"
+    networks:
+      app_net:
+        ipv4_address: 172.28.5.41
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10mb"
+        max-file: "5"
+
+  db:
+    tty: true
+    env_file:
+      - .env
+    image: mysql
+    networks:
+      app_net:
+        ipv4_address: 172.28.5.42
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: larapizza
+    volumes:
+      - larapizza_dbdata:/var/lib/mysql
+
+networks:
+  app_net:
+    external: true
+
+volumes:
+  larapizza_dbdata:
+    external: true
