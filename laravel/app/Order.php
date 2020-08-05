@@ -16,11 +16,13 @@ class Order extends Model
         'first_name', 'last_name', 'address', 'phone', 'comment', 'currency', 'delivery'
     ];
 
-    /**
-     * Get the comments for the blog post.
-     */
     public function items()
     {
         return $this->hasMany('App\OrderItem');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

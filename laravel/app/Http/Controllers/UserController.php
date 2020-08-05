@@ -10,6 +10,6 @@ class UserController extends Controller
 {
     //
     public function listOrders(Request $request){
-        return view('pastOrders', ['orders' => Order::where('id', Auth::id())->get()]);
+        return view('pastOrders', ['orders' => Order::where('user_id', Auth::id())->get()]);
     }
 }

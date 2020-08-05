@@ -68,12 +68,12 @@ class CheckoutController extends Controller
         $orderData['last_name'] = $orderData['region_id'] ?? '';
         $orderData['comment'] = $orderData['comment'] ?? '';
         $orderData['delivery'] = $request->session()->get($orderData['currency'] === 'euro' ? 'delivery_euro' : 'delivery_usd');
-        if (Auth::check()) {
-            $orderData['user_id'] = Auth::id();
-        }
 
         DB::beginTransaction();
         $order = new Order($orderData);
+        if (Auth::check()) {
+            $order->user()->associate(Auth::user());
+        }
         $order->save();
 
         foreach ($cart['goods'] as $goods) {

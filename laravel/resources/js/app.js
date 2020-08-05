@@ -1,4 +1,4 @@
-let cartButton, numberElement;
+let cartButton, numberElement, navCurrencyEl;
 
 function updateCartQuantity(totalInCart) {
     if (totalInCart > 0) {
@@ -88,12 +88,14 @@ function toggleCurrency() {
 
                 if (json.currency === 'euro') {
                     currencyEl.innerHTML = '&euro;';
+                    navCurrencyEl.innerHTML = '&euro;';
                     const input_euro = document.querySelector('input#euro');
                     if (input_euro) {
                         input_euro.checked = true;
                     }
                 } else {
                     currencyEl.innerHTML = '&dollar;';
+                    navCurrencyEl.innerHTML = '&dollar;';
                     const input_usd = document.querySelector('input#usd');
                     if (input_usd) {
                         input_usd.checked = true;
@@ -120,7 +122,8 @@ function addListeners() {
             button.onclick = updateQuantity;
         });
 
-    document.querySelector('nav .currency').onclick = toggleCurrency;
+    navCurrencyEl = document.querySelector('nav .currency')
+    navCurrencyEl.onclick = toggleCurrency;
 
     Array.from(document.querySelectorAll('input#euro, input#usd')).map((el) => {
         el.onchange = toggleCurrency;
