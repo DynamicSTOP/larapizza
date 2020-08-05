@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-    <div>@json($errors)</div>
     <div class="column login @if($form!=='login') d-none @endif">
 
         <form method="POST" action="{{ route('login') }}">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
@@ -67,6 +68,9 @@ class CheckoutController extends Controller
         $orderData['last_name'] = $orderData['region_id'] ?? '';
         $orderData['comment'] = $orderData['comment'] ?? '';
         $orderData['delivery'] = $request->session()->get($orderData['currency'] === 'euro' ? 'delivery_euro' : 'delivery_usd');
+        if (Auth::check()) {
+            $orderData['user_id'] = Auth::id();
+        }
 
         DB::beginTransaction();
         $order = new Order($orderData);
@@ -82,6 +86,15 @@ class CheckoutController extends Controller
             $orderItem->save();
         }
         DB::commit();
+
+        if (Auth::check()) {
+            // updating user contacts
+            $user = Auth::user();
+            $user->address = $orderData['address'];
+            $user->name = $orderData['first_name'];
+            $user->save();
+        }
+
 
         $request->session()->remove('cart');
         $request->session()->remove('delivery');
