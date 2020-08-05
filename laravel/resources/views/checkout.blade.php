@@ -1,5 +1,20 @@
 @extends('layouts.main')
 
+@php
+    $name = old('first_name');
+    if(empty($name) && Auth::check()){
+        $name = Auth::user()->name;
+    }
+    $phone = old('phone');
+    if(empty($phone) && Auth::check()){
+        $phone = Auth::user()->phone;
+    }
+    $address = old('address');
+    if(empty($address) && Auth::check()){
+        $address = Auth::user()->address;
+    }
+@endphp
+
 @section('content')
     <form method="POST" action="/checkout">
         @csrf
@@ -9,7 +24,7 @@
                     <div class="half">
                         <input class="@error('first_name') is-invalid @enderror"
                                type="text"
-                               value="{{ old('first_name') }}"
+                               value="{{ $name }}"
                                name="first_name"
                                placeholder="First name*"
                                required
@@ -26,21 +41,21 @@
                     </div>
                 </div>
                 @error('first_name')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div>{{ $message }}</div>
                 @enderror
                 @error('last_name')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div>{{ $message }}</div>
                 @enderror
                 <div>
                     <input class="@error('address') is-invalid @enderror long"
                            type="text"
-                           value="{{old('address')}}"
+                           value="{{$address}}"
                            name="address"
                            placeholder="Address*"
                            required
                     >
                     @error('address')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div>{{ $message }}</div>
                     @enderror
                 </div>
 
@@ -48,7 +63,7 @@
                     <div class="half">
                         <input class="@error('phone') is-invalid @enderror"
                                type="text"
-                               value="{{old('phone')}}"
+                               value="{{ $phone }}"
                                name="phone"
                                placeholder="Phone*"
                                required
@@ -85,10 +100,10 @@
                     </div>
                 </div>
                 @error('phone')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div>{{ $message }}</div>
                 @enderror
                 @error('currency')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div>{{ $message }}</div>
                 @enderror
 
 
