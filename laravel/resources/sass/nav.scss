@@ -5,10 +5,10 @@ nav {
     &.row {
         padding: 0;
         margin-left: -15px;
-        @include tablet{
+        @include tablet {
             margin-left: 0;
         }
-        @include phone{
+        @include phone {
             margin-left: 0;
         }
     }
@@ -19,8 +19,6 @@ nav {
         cursor: pointer;
         text-decoration: none;
         color: var(--color-complement-4);
-
-
     }
 
     .navbar-brand {
@@ -42,7 +40,7 @@ nav {
     top: 0;
     width: 100%;
 
-    .currency{
+    .user, .currency {
         cursor: pointer;
         margin: 0 5px;
         font-size: 30px;
@@ -53,7 +51,7 @@ nav {
         font-weight: 500;
         vertical-align: middle;
         height: 100%;
-        line-height: 42px;
+        line-height: 44px;
         text-align: center;
         user-select: none;
 
@@ -62,6 +60,44 @@ nav {
         }
     }
 
+    img {
+        height: 40px;
+        vertical-align: inherit;
+    }
+
+    .user {
+        img {
+            height: 30px;
+        }
+
+        &:hover, &.active {
+            background: var(--color-secondary-2-2);
+
+            .user--details {
+                display: flex;
+                font-size: 16px;
+            }
+        }
+
+        .user--details {
+            position: absolute;
+            display: none;
+            right: 0;
+            min-width: 250px;
+            background: var(--color-secondary-2-1);
+            top: 54px;
+            border-bottom-right-radius: .25rem;
+            border-bottom-left-radius: .25rem;
+
+            a {
+                display: block;
+
+                &:hover {
+                    background: var(--color-secondary-2-2);
+                }
+            }
+        }
+    }
 }
 
 body > .container {
@@ -73,6 +109,5 @@ body > .container {
 
     @include phone {
         padding-top: 80px;
-
     }
 }

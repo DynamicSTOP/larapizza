@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,18 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'Controller@index')->name('index');
+Route::get('', 'Controller@index')->name('index');
 
-Route::group(['prefix'=>'/checkout'], function(){
+Route::group(['prefix' => '/user', 'middleware' => 'auth'], function () {
+    Route::get('orders', 'UserController@listOrders')->name('orders');
+});
+
+
+Route::group(['prefix' => '/checkout'], function () {
     Route::get('', 'CheckoutController@show')->name('checkout');
     Route::post('', 'CheckoutController@order');
 });
 
 
-
-Route::group(['prefix'=>'api'], function(){
-    Route::group(['prefix'=>'v1'], function(){
-        Route::group(['prefix'=>'cart'], function(){
+Route::group(['prefix' => 'api'], function () {
+    Route::group(['prefix' => 'v1'], function () {
+        Route::group(['prefix' => 'cart'], function () {
             Route::get('', 'Cart@show');
             // i don't think splitting into post\put\patch worth the trouble
             Route::post('', 'Cart@addItem');
@@ -33,3 +38,6 @@ Route::group(['prefix'=>'api'], function(){
         Route::post('/toggleCurrency', 'Controller@toggleCurrency');
     });
 });
+
+Auth::routes(['reset' => false, 'confirm' => false, 'verify' => false]);
+Route::get('/logout','Auth\LoginController@logout')->name('logout');

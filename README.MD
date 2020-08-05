@@ -46,5 +46,3 @@ todo artisan key, db, link to server
 Free stock photos used from [unsplash.com](https://unsplash.com)
 
 Opensource svgs from [OPEN ICONIC](https://useiconic.com/open/)
-
-[Bootstrap 4](https://getbootstrap.com/)

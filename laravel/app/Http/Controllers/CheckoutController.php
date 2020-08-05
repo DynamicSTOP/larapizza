@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
@@ -70,6 +71,9 @@ class CheckoutController extends Controller
 
         DB::beginTransaction();
         $order = new Order($orderData);
+        if (Auth::check()) {
+            $order->user()->associate(Auth::user());
+        }
         $order->save();
 
         foreach ($cart['goods'] as $goods) {
@@ -82,6 +86,15 @@ class CheckoutController extends Controller
             $orderItem->save();
         }
         DB::commit();
+
+        if (Auth::check()) {
+            // updating user contacts
+            $user = Auth::user();
+            $user->address = $orderData['address'];
+            $user->name = $orderData['first_name'];
+            $user->save();
+        }
+
 
         $request->session()->remove('cart');
         $request->session()->remove('delivery');
