@@ -26,10 +26,10 @@
                     </div>
                 </div>
                 @error('first_name')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div>{{ $message }}</div>
                 @enderror
                 @error('last_name')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div>{{ $message }}</div>
                 @enderror
                 <div>
                     <input class="@error('address') is-invalid @enderror long"
@@ -40,7 +40,7 @@
                            required
                     >
                     @error('address')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div>{{ $message }}</div>
                     @enderror
                 </div>
 
@@ -85,10 +85,10 @@
                     </div>
                 </div>
                 @error('phone')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div>{{ $message }}</div>
                 @enderror
                 @error('currency')
-                <div class="alert alert-danger">{{ $message }}</div>
+                <div>{{ $message }}</div>
                 @enderror
 
 

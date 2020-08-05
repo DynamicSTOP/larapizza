@@ -27,7 +27,7 @@
         right: 0;
         min-width: 250px;
         background: var(--color-secondary-2-1);
-        top: 52px;
+        top: 54px;
         border-bottom-right-radius: .25rem;
         border-bottom-left-radius: .25rem;
     }
@@ -41,12 +41,6 @@
         }
     }
 
-
-    img {
-        height: 40px;
-        vertical-align: bottom;
-        margin-right: 5px;
-    }
 }
 
 
@@ -58,8 +52,4 @@
     height: 100%;
     z-index: 1000;
     background: #000000AA;
-}
-
-.cartPopup {
-
 }
