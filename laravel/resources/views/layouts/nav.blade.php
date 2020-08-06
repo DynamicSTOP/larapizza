@@ -1,6 +1,6 @@
 <nav class="container row">
     <div class="navbar-brand">
-        <a href="/">LARA PIZZA</a>
+        <a href="{{route('index')}}">LARA PIZZA</a>
     </div>
     <div class="row">
         @unless(Request::is('register') || Request::is('login'))

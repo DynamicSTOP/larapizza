@@ -14,7 +14,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('', 'Controller@index')->name('index');
+Route::get('', 'HomeController@index')->name('index');
+Route::get('/menu', 'HomeController@menu')->name('menu');
+
+Route::get('/contact-us', 'HomeController@dummy')->name('contact-us');
+Route::get('/legal', 'HomeController@dummy')->name('legal');
+Route::get('/locations', 'HomeController@dummy')->name('locations');
+
 
 Route::group(['prefix' => '/user', 'middleware' => 'auth'], function () {
     Route::get('orders', 'UserController@listOrders')->name('orders');
@@ -30,12 +36,13 @@ Route::group(['prefix' => '/checkout'], function () {
 Route::group(['prefix' => 'api'], function () {
     Route::group(['prefix' => 'v1'], function () {
         Route::group(['prefix' => 'cart'], function () {
-            Route::get('', 'Cart@show');
+            //Route::get('', 'CartController@show');
             // i don't think splitting into post\put\patch worth the trouble
-            Route::post('', 'Cart@addItem');
-            Route::delete('', 'Cart@removeItem');
+            Route::post('', 'CartController@updateItem');
+            Route::put('', 'CartController@updateItem');
+            Route::delete('', 'CartController@removeItem');
         });
-        Route::post('/toggleCurrency', 'Controller@toggleCurrency');
+        Route::post('/toggleCurrency', 'HomeController@toggleCurrency');
     });
 });
 
