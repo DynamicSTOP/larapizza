@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
-class CheckoutHomeController extends HomeController
+class CheckoutController extends HomeController
 {
     private function renderCheckoutPage(Request $request, $errors = false)
     {
