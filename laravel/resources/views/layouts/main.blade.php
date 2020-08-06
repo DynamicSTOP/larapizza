@@ -1,24 +1,43 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title', 'LARA PIZZA')</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/app.css?@php echo filemtime(public_path('css/app.css')); @endphp">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slices - Pizzeria HTML Template</title>
+
+    <!-- Vendor Stylesheets -->
+    <link rel="stylesheet" href="/assets/css/plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/plugins/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/plugins/slick.css">
+    <link rel="stylesheet" href="/assets/css/plugins/slick-theme.css">
+    <!-- Icon Fonts -->
+    <link rel="stylesheet" href="/assets/fonts/flaticon/flaticon.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome/css/all.min.css">
+
+    <!-- Slices Style sheet -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="{{ mix('/assets/css/app.css') }}">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
     <script type="text/javascript">
         window.csrf = '{{csrf_token()}}';
         window.currency = @json(Session::get('currency','euro'));
     </script>
-    <script src="/js/app.js?@php echo filemtime(public_path('js/app.js')); @endphp" type="text/javascript" defer></script>
 </head>
+
 <body>
-<div class="container">
-    @include('layouts.nav')
-    <div class="wrapper">@yield('content')</div>
-    @include('layouts.footer')
-</div>
+@include('layouts.head')
+@yield('content')
+@include('layouts.footer')
+
+<!-- Vendor Scripts -->
+<script src="{{ mix('/assets/js/vendor.js') }}"></script>
+
+<!-- Site Scripts -->
+<script src="{{ mix('/assets/js/app.js') }}" defer></script>
+
 </body>
+
 </html>
