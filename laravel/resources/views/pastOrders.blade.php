@@ -2,50 +2,74 @@
 
 
 @section('content')
-    @if(count($orders)===0)
-        <h3>No order info!</h3>
-    @else
-        <div class="column orders">
-            @foreach($orders as $order)
-                <div class="column order">
-                    <div>
-                        <h3>Order#{{$order->id}}</h3>
-                    </div>
-                    <div class="details column">
-                        <div>Date: {{ ($order->created_at)->format('m/d/Y H:i') }}</div>
-                        <div>Name: {{ $order->first_name }} {{$order->last_name}}</div>
-                        <div>Address: {{ $order->address }}</div>
-                        <div>Comment: {{ $order->comment }}</div>
-                        <div>Currency: {{ $order->currency }}</div>
-                    </div>
-                    <div class="column orderItems">
-                        @php
-                            $currency = $order->currency==='euro' ? "&euro;" : "&dollar;";
-                            $total = $order->delivery;
-                        @endphp
-                        <div class="table">
-                            @foreach($order->items as $item)
-                                @php
-                                    $total += $item->price * $item->quantity;
-                                @endphp
-                                <div class="row goods-row">
-                                    <div>{{$item->goods->name}}</div>
-                                    <div>@moneyNC($item->price){!! $currency !!}</div>
-                                    <div>{{$item->quantity}}</div>
-                                    <div>@moneyNC($item->price * $item->quantity){!! $currency !!}</div>
-                                </div>
-                            @endforeach
-                            <div class="row">
-                                <div>Delivery</div>
-                                <div></div>
-                                <div></div>
-                                <div>@moneyNC($order->delivery){!! $currency !!}</div>
-                            </div>
+    <div class="container col-xl-6">
+        @if(count($orders)===0)
+            <h3>No order info!</h3>
+        @else
+
+            <div class="column">
+                @foreach($orders as $order)
+                    <div class="past-order-item">
+                        <div class="column details">
+                            <div><strong>Id:</strong> {{ ($order->id) }}</div>
+                            <div><strong>Date:</strong> {{ ($order->created_at)->format('m/d/Y H:i') }}</div>
+                            <div><strong>Name:</strong> {{ $order->first_name }} {{$order->last_name}}</div>
+                            <div><strong>Address:</strong> {{ $order->address }}</div>
+                            <div><strong>Comment:</strong> {{ $order->comment }}</div>
+                            <div><strong>Currency:</strong> {{ $order->currency }}</div>
                         </div>
-                        <div class="total">Total: @moneyNC($total){!! $currency !!}</div>
+
+                        <div>
+                            <table class="ct-responsive-table">
+                                <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Qunantity</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @php
+                                    $currency = $order->currency==='euro' ? "&euro;" : "&dollar;";
+                                    $total = $order->delivery;
+                                @endphp
+                                @foreach($order->items as $item)
+                                    @php
+                                        $total += $item->price * $item->quantity;
+                                    @endphp
+                                    <tr>
+                                        <td data-title="Product">
+                                            <div class="cart-product-wrapper">
+                                                <div class="cart-product-body">
+                                                    <h6>{{$item->goods->name}}</h6>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td data-title="Quantity">x{{$item->quantity}}</td>
+                                        <td data-title="Total"><strong>{!! $currency !!}@moneyNC($item->price *
+                                                $item->quantity)</strong></td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td>Delivery</td>
+                                    <td></td>
+                                    <td><strong>{!! $currency !!}
+                                            @moneyNC($order->delivery)</strong></td>
+                                </tr>
+                                <tr class="total">
+                                    <td>
+                                        <h6 class="mb-0">Grand Total</h6>
+                                    </td>
+                                    <td></td>
+                                    <td><strong>{!! $currency !!}@moneyNC($total)</strong></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-            @endforeach
-        </div>
-    @endif
+
+                @endforeach
+            </div>
+        @endif
+    </div>
 @endsection

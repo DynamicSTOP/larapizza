@@ -1,128 +1,69 @@
-//
-@import "palette";
+header.main-header {
+    position: fixed;
+    background: #fff;
 
-@mixin text-shadow($shadow:#000) {
-    text-shadow: 0 1px 1px $shadow, 0 -1px 1px $shadow, 1px 0 1px $shadow, -1px 0 1px $shadow;
-}
-
-@mixin phone {
-    @media (max-width: 425px) {
-        @content
+    + * {
+        margin-top: 138px;
     }
 }
 
-@mixin tablet {
-    @media (min-width: 426px) and (max-width: 1023px) {
-        @content
-    }
-}
+.product {
+    .product-quantity-controls {
+        margin: 0;
 
-@mixin desktop {
-    @media (min-width: 1024px) {
-        @content
-    }
-}
+        div {
+            font-weight: 700;
+            color: #1D2228;
+            margin: 0;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 25px;
+        }
 
-@mixin standardButton {
-    cursor: pointer;
-    justify-content: center;
-    margin: auto;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    font: 500 1rem "Roboto";
-}
+        .quantity {
+            min-width: 50px;
+            text-align: center;
+        }
 
-html, body {
-    background: var(--color-primary-4);
-    font-family: 'Roboto', sans-serif;
-    padding: 0;
-    margin: 0;
-    height: 100%;
-}
+        .minus, .plus {
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, .1);
+            padding: 5px 10px;
 
-.wrapper{
-    min-height:100%;
-    margin-bottom:83px;
-}
+            img {
+                height: 18px;
+            }
 
-*, ::after, ::before {
-    box-sizing: border-box;
-}
+            user-select: none;
+        }
 
-.row {
-    display: flex;
-    flex-direction: row;
-}
+        .btn-custom.plus {
+            background-color: #20C997;
+            -webkit-box-shadow: 4px 3px 24px rgba(77, 192, 181, .8);
+            box-shadow: 4px 3px 24px rgba(77, 192, 181, .8);
 
-.column {
-    display: flex;
-    flex-direction: column;
-}
-
-.table {
-    display: table;
-    > div {
-        display: table-row;
-        > div {
-            display: table-cell;
+            &::before {
+                background: rgba(77, 192, 181);
+            }
         }
     }
 }
 
-
-.d-none {
-    display: none !important;
+.currency-switch span{
+    font-size: 26px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: .3s;
+    &:hover{
+        color: #ED4E53;
+    }
 }
-
-.footer {
-    padding: 2rem;
-    background: var(--color-primary-0);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.container {
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-@include phone {
-    .container {
-        width: 100%;
-        padding: 0;
+.past-order-item {
+    margin-bottom: 120px;
+    .details{
+        font-size: 20px;
+        margin-bottom: 15px;
     }
 }
 
-@include tablet {
-    .container {
-        width: 100%;
-        padding: 0;
-    }
-}
-
-@include desktop {
-    .container {
-
-        padding-right: 15px;
-        padding-left: 15px;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-@import "nav";
-@import "cart";
-@import "goods";
-@import "checkout";
-@import "cartTable";
-@import "login";
-@import "orders";
