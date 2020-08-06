@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterHomeController extends HomeController
+class RegisterController extends HomeController
 {
     /*
     |--------------------------------------------------------------------------
