@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
-class LoginHomeController extends HomeController
+class LoginController extends HomeController
 {
     /*
     |--------------------------------------------------------------------------
