@@ -13,33 +13,34 @@ I prefer keep things separate in containers.
 
 2. Add network
     ```bash
-    docker network create app_net
+    docker network create --gateway 172.28.5.254 --ip-range 172.28.5.0/24 --subnet 172.28.0.0/16 app_net
     ``` 
     This will allow having static ips for services in case you have nginx in proxy mode outside.
     
-3. Start containers
+3. Copy and modify `.env.exmple` -> `.env` and `docker-compose.dev.yml` -> `docker-compose.yml`
+
+4. Use `chown` and `chmod` onto project folder. User id and group id specified in .env. 
+    
+5. Start containers
     ```bash
    docker-compose up -d 
    ```
+   
    Now you can access laravel container with
    ```bash
    docke-compose exec php bash
    ``` 
 
-4. Inside container generate key
+6. Inside container
    ```bash
-   php artisan key:generate 
-   ```   
-   
-5. Install node modules and compile assets
-   ```
+   cd /var/www/web/laravel
+   composer install
+   cp .env.example .env
+   php artisan key:generate
+   php artisan migrate:fresh --seed
    npm install
-   npm run dev
-   ```
-
-
-todo artisan key, db, link to server
-
+   npm run dev 
+   ```   
 
 #### P.S.
 
