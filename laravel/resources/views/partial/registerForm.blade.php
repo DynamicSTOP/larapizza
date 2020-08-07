@@ -15,7 +15,7 @@
         </div>
 
         @error('phone')
-        <div class="col-xl-6 form-group">{{ $message }}</div>
+        <div class="col-xl-12 form-group">{{ $message }}</div>
         @enderror
         </div>
         <div class="col-xl-6 form-group">
@@ -30,9 +30,6 @@
                    autocomplete="new-password"
                    placeholder="{{ __('Password') }}">
         </div>
-        @error('password')
-        <div class="col-xl-6 form-group">{{ $message }}</div>
-        @enderror
         <div class="col-xl-6 form-group">
             <label for="password">Repeat Password</label>
             <input class="form-control @error('password') is-invalid @enderror"
@@ -45,6 +42,9 @@
                    autocomplete="new-password"
                    placeholder="{{ __('Password') }}">
         </div>
+        @error('password')
+        <div class="col-xl-12 form-group">{{ $message }}</div>
+        @enderror
         <div class="col-12">
             <button type="submit" class="btn-custom shadow-none btn-sm" name="button">{{ __('Register') }}</button>
         </div>

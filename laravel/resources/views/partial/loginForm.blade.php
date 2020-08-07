@@ -15,9 +15,6 @@
                    autofocus
                    placeholder="{{ __('Phone') }}">
         </div>
-        @error('phone')
-        <div class="col-xl-6 form-group">{{ $message }}</div>
-        @enderror
         <div class="col-xl-6 form-group">
             <label for="password">Password</label>
             <input class="form-control @error('password') is-invalid @enderror"
@@ -29,8 +26,11 @@
                    autofocus
                    placeholder="{{ __('Password') }}">
         </div>
+        @error('phone')
+        <div class="col-xl-12 form-group">{{ $message }}</div>
+        @enderror
         @error('password')
-        <div class="col-xl-6 form-group">{{ $message }}</div>
+        <div class="col-xl-12 form-group">{{ $message }}</div>
         @enderror
         <div class="col-12 form-group">
             <div class="custom-control custom-checkbox">
