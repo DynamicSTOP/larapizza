@@ -47,31 +47,32 @@
   /*-------------------------------------------------------------------------------
   Isotope (Menu Categories)
   -------------------------------------------------------------------------------*/
-  jQuery(document).ready(function(){
-      var $container = $('.menu-container');
-      $container.isotope({
-          filter: '*',
-          animationOptions: {
-              duration: 750,
-              easing: 'linear',
-              queue: false
-          }
-      });
-      $('.menu-filter a').on('click', function() {
-          $('.menu-filter .active').removeClass('active');
-          $(this).addClass('active');
+  var $container = $('.menu-container');
+  $container.find('img').load(function (){
+    $container.isotope('layout');
+  })
+  $container.isotope({
+    filter: '*',
+    animationOptions: {
+      duration: 750,
+      easing: 'linear',
+      queue: false
+    }
+  });
+  $('.menu-filter a').on('click', function() {
+    $('.menu-filter .active').removeClass('active');
+    $(this).addClass('active');
 
-          var selector = $(this).attr('data-filter');
-          $container.isotope({
-              filter: selector,
-              animationOptions: {
-                  duration: 750,
-                  easing: 'linear',
-                  queue: false
-              }
-          });
-          return false;
-      });
+    var selector = $(this).attr('data-filter');
+    $container.isotope({
+      filter: selector,
+      animationOptions: {
+        duration: 750,
+        easing: 'linear',
+        queue: false
+      }
+    });
+    return false;
   });
   /*-------------------------------------------------------------------------------
   Sticky Header
