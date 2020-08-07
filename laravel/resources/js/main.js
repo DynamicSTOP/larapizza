@@ -48,9 +48,9 @@
   Isotope (Menu Categories)
   -------------------------------------------------------------------------------*/
   var $container = $('.menu-container');
-  $container.find('img').load(function (){
+  $container.find('img').on('load', function (){
     $container.isotope('layout');
-  })
+  });
   $container.isotope({
     filter: '*',
     animationOptions: {
