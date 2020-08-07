@@ -51,9 +51,8 @@
                                     </tr>
                                 @endforeach
                                 <tr>
-                                    <td>Delivery</td>
-                                    <td></td>
-                                    <td><strong>{!! $currency !!}
+                                    <td class="nobefore" colspan="2"><h6>Delivery</h6></td>
+                                    <td class="nobefore"><strong>{!! $currency !!}
                                             @moneyNC($order->delivery)</strong></td>
                                 </tr>
                                 <tr class="total">
