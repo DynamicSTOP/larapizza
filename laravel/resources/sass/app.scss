@@ -66,4 +66,12 @@ header.main-header {
         margin-bottom: 15px;
     }
 }
+.ct-responsive-table td.nobefore{
+    &::before{
+        display: none;
+    }
+    h6{
+        margin-bottom: 0;
+    }
+}
 

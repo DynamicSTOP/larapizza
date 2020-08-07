@@ -40,15 +40,8 @@
             $delivery = Session::get('currency','euro') === 'euro'? $delivery_euro : $delivery_usd;
         @endphp
         <tr>
-            <td data-title="Product">
-                <div class="cart-product-wrapper">
-                    <div class="cart-product-body">
-                        <h6>Delivery</h6>
-                    </div>
-                </div>
-            </td>
-            <td data-title="Quantity"></td>
-            <td data-title="Total"> <strong data-price_usd="@moneyNC($delivery_usd)"
+            <td class="nobefore" colspan="2"><h6>Delivery</h6></td>
+            <td class="nobefore"> <strong data-price_usd="@moneyNC($delivery_usd)"
                                             data-price_euro="@moneyNC($delivery_euro)"
                 >@money($delivery)</strong> </td>
         </tr>
